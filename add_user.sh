@@ -51,7 +51,7 @@ else
 fi
 
 # Ask the user to input a user name
-echo-e "\033[33mPlease enter a name (Use A to Z and 1 to 9):\033[0m"
+echo -e "\033[33mPlease enter a name (Use A to Z and 1 to 9):\033[0m"
 # Read user input
 read -r USER_NAME
 
