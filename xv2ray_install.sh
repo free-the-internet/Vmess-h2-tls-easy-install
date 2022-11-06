@@ -82,6 +82,7 @@ rm -f "Xray-linux-$MACHINE.zip"
 mkdir -p /var/log/v2ray
 LOG_DIR="/var/log/v2ray"
 # Create Xray config file
+mkdir -p /etc/xray/
 cat > /etc/xray/config.json << EOF
 {
   "log": {
