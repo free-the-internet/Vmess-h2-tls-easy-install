@@ -14,5 +14,5 @@ Easy Setup Of Vmess + H2 + TLS with The Latest Xray
 
 1. Open a Terminal window and run the following.
 ```
-bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)"
+bash -c "$(curl -L https://github.com/free-the-internet/Vmess-h2-tls-easy-install/blob/main/xv2ray_install.sh)"
 ```
