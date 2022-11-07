@@ -10,8 +10,9 @@ then
     exit
 fi
 
+CONFIG_PATH='/etc/xray/config.json'
 # Check if config file exists
-if [ ! -f /etc/xray/config.json ]; then
+if [ ! -f $CONFIG_PATH ]; then
     # echo in red
     echo -e "\033[31mXray config file not found in default path!\033[0m"
     echo -e "\033[94mEnter the path to your config file:\033[0m"
@@ -59,7 +60,8 @@ read -r USER_NAME
 uuid=$(/usr/bin/uuidgen)
 
 # Add to client array of v2ray config
-jq '.inbounds[0].settings.clients += [{"id": "'$uuid'", "alterId": 0, "email": "'${USER_NAME}'@v.pn", "security": "'$ENC'"}]' $CONFIG_PATH > "$CONFIG_PATH".tmp && mv "$CONFIG_PATH".tmp $CONFIG_PATH
+jq '.inbounds[0].settings.clients += [{"id": "'$uuid'", "alterId": 0, "email": "'${USER_NAME}'@v.pn", "security": "'$ENC'"}]' $CONFIG_PATH > "$CONFIG_PATH".tmp
+mv "$CONFIG_PATH".tmp $CONFIG_PATH
 
 if jq empty "$CONFIG_PATH"; then
   echo -e "\033[33mSettings is valid\033[0m"
