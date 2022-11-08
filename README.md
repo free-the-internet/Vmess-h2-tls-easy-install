@@ -28,8 +28,11 @@ Change directory to the choosen directory and and run it by `bash add_user.sh`
 
 ## Client software
 ### Android
-https://play.google.com/store/apps/details?id=com.v2ray.ang
-apk: https://github.com/2dust/v2rayNG/releases
+1. Googleplay: https://play.google.com/store/apps/details?id=com.v2ray.ang
+2. APK: https://github.com/2dust/v2rayNG/releases
+
+ * After installation, go to Settings and change "Remote DNS" to `8.8.8.8`.
+ * uTLS options need to be set to `chrome`, `firefox` or sometimes to `random`.
 
 ### Windows
 https://github.com/2dust/v2rayN/releases
