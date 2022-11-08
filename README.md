@@ -12,7 +12,15 @@ Easy Setup Of Vmess + H2 + TLS with The Latest Xray
 ## Setup your proxy server
 0. You may first need to install `curl` (`apt install curl`)
 
-1. Open a Terminal window and run the following.
+1. Open a Terminal window and run the following:
 ```
 bash <(curl -s https://raw.githubusercontent.com/free-the-internet/Vmess-h2-tls-easy-install/main/xv2ray_install.sh)
 ```
+## Adding clients
+There is a script. It creates a new user, restarts the service and prints base64 and info of the newly generated client.
+
+Download it to your favorite directory using the following command:
+```
+curl -O https://raw.githubusercontent.com/free-the-internet/Vmess-h2-tls-easy-install/main/add_user.sh
+```
+Change directory to the choosen directory and and run it by `bash add_user.sh`
