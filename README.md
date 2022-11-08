@@ -2,7 +2,7 @@
 Easy Setup Of Vmess + H2 + TLS with The Latest Xray
 
 ## What do you need?
-0. For sure a VPS; a cheap one with minimum 384 MB of memory, with ports 80 and 443 open.
+0. For sure a VPS; a cheap one with minimum 384 MB of memory, **with ports 80 and 443 open** (approximate price: > 1$/month. advice: get an EU server).
 1. Debian or Ubuntu with a root account.
 2. A domain. Go to register one for free on Freenom: https://www.freenom.com, or buy one from any sources you know.
 * Select .ml for certain countries that censor blocks the domains based on suffixes.
