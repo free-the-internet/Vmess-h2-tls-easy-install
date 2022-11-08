@@ -80,7 +80,7 @@ echo -e "\033[33mPlease enter a name (Use A to Z and 1 to 9):\033[0m"
 read -r USER_NAME
 
 # Generate a random uuid
-uuid=$(/usr/bin/uuidgen)
+uuid=$(cat /proc/sys/kernel/random/uuid)
 
 # Add to client array of v2ray config
 jq '.inbounds[0].settings.clients += [{"id": "'$uuid'", "alterId": 0, "email": "'${USER_NAME}'@v.pn", "security": "'$ENC'"}]' $CONFIG_PATH > "$CONFIG_PATH".tmp
