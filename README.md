@@ -25,3 +25,16 @@ Download it to your favorite directory using the following command:
 curl -O https://raw.githubusercontent.com/free-the-internet/Vmess-h2-tls-easy-install/main/add_user.sh
 ```
 Change directory to the choosen directory and and run it by `bash add_user.sh`
+
+## Client software
+### Android
+https://play.google.com/store/apps/details?id=com.v2ray.ang
+apk: https://github.com/2dust/v2rayNG/releases
+
+### Windows
+https://github.com/2dust/v2rayN/releases
+
+### Apple
+-
+
+
