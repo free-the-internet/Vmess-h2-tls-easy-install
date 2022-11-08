@@ -24,6 +24,29 @@ if [ ! -f $CONFIG_PATH ]; then
     fi
 fi
 
+DOMAIN_NAME_F='./domain.name'
+DOMAIN_NAME=""
+# Check if domian.name file exists, if yes, print the domain name
+if [ -f $DOMAIN_NAME_F ]; then
+    echo -e "\033[94mDomain name found:\033[0m"
+    echo -e "$(cat $DOMAIN_NAME_F)"
+    echo -e "\033[94mDo you want to use this domain name? (y/n)\033[0m"
+    read -r ANSWER
+    if [ "$ANSWER" = "y" ]; then
+        DOMAIN_NAME=$(cat $DOMAIN_NAME_F)
+    else
+        echo -e "\033[94mPlease enter your domain name (* Without www):\033[0m"
+        read -r DOMAIN_NAME
+        # Save domain name to file
+        echo "$DOMAIN_NAME" > $DOMAIN_NAME_F
+    fi
+else
+    echo -e "\033[94mPlease enter your domain name:\033[0m"
+    read -r DOMAIN_NAME
+    # Save domain name to file
+    echo "$DOMAIN_NAME" > $DOMAIN_NAME_F
+fi
+
 # Ask the user to input OS name
 echo -e "\033[94mPlease select end-user's OS:\033[0m"
 echo -e "\033[94m1. Windows\033[0m"
@@ -74,14 +97,29 @@ fi
 systemctl restart xray
 
 # Print the user info
+echo -e "\033[94mUser info for manual enter\033[0m"
 echo "Remarks: ${USER_NAME}"
-echo "address: YOUR_DOMAIN_NAME"
+echo "address: $DOMAIN_NAME"
 echo "UUID/id: ${uuid}"
 echo "Security/Encryption: ${ENC}"
 echo "AlterId: 0"
 echo "Network: h2 / tls"
 echo "Leave the 'request host' and 'path' empty"
-echo "SNI: YOUR_DOMAIN_NAME (with www.)"
+echo "SNI: www.$DOMAIN_NAME (with www.)"
 echo "uTLS: chrome"
 echo "alpn: h2, http/1.1"
 echo "allowlnsecure: false"
+# Calculate the base64 of the user info
+VMESS=$(cat <<EOF
+{"add":"$DOMAIN_NAME","aid":"0","alpn":"h2,http/1.1","host":"","id":"$uuid","net":"h2","path":"","port":"443","ps":"${USER_NAME:0:3}","scy":"$ENC","sni":"www.$DOMAIN_NAME","tls":"tls","type":"","v":"2"}
+EOF
+)
+CC=$(echo $VMESS | base64 -w 0)
+# Print a hline
+echo -e "\033[94m=============USER INFO=============\033[0m"
+echo -e "\033[32mvmess://$CC\033[0m"
+echo -e "\033[94m=============USER INFO=============\033[0m"
+echo -e "\033[33mDO NOT FORGET TO SET 'uTLS' to 'chrome' or 'firefox' AFTER ADDING THE CONFIG LINE\033[0m"
+# Calculate the QR code of the user info
+#echo -e "\033[94mQR code:\033[0m"
+#echo -e "\033[32m$CC\033[0m" | qrencode -o - -t UTF8
