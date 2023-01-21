@@ -101,7 +101,8 @@ cat > /etc/xray/config.json << EOF
           {
             "id": "$uuid",
           }
-        ]
+        ],
+        "decryption": "none"
       },
       "streamSettings": {
         "network": "tcp",
